@@ -7,8 +7,8 @@ Coordinates lexical analysis, parsing, semantic analysis, and code generation
 import sys
 import argparse
 from pathlib import Path
-from lexer import Lexer
-from parser import Parser
+from pascal_lexer import Lexer
+from pascal_parser import Parser
 from semantic_analyzer import SemanticAnalyzer, SemanticError
 from code_generator import CodeGenerator
 

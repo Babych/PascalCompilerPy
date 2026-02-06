@@ -4,7 +4,7 @@ Parses tokens into an Abstract Syntax Tree
 """
 
 from typing import List, Optional
-from lexer import Token, TokenType
+from pascal_lexer import Token, TokenType
 from ast_nodes import *
 
 class Parser:
