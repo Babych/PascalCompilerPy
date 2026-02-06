@@ -1,84 +1,66 @@
 # Pascal Compiler
 
-![CI Status](https://github.com/YOUR_USERNAME/pascal-compiler/workflows/Pascal%20Compiler%20CI/badge.svg)
-![Quick Test](https://github.com/YOUR_USERNAME/pascal-compiler/workflows/Quick%20Test/badge.svg)
+![CI Status](https://github.com/babych/PascalCompilerPy/workflows/Pascal%20Compiler%20CI/badge.svg)
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
-Повнофункціональний компілятор мови Pascal, написаний на Python. Підтримує всі основні конструкції Pascal та генерує проміжний код у форматі three-address code.
+A full-featured Pascal language compiler written in Python. Supports all core Pascal constructs and generates intermediate code in three-address code format.
 
-## 🚀 Швидкий старт
+## 🚀 Quick Start
 
 ### Windows
-```cmd
 python pascal_compiler.py test_simple.pas
-```
 
-або двічі клацніть `run_tests_windows.bat`
+or double-click `run_tests_windows.bat`
 
 ### Linux / macOS
-```bash
 python3 pascal_compiler.py test_simple.pas
-```
 
-або запустіть:
-```bash
+or run:
 python3 run_tests.py
-```
 
-## ✨ Можливості
+## ✨ Features
 
-- ✅ Повна підтримка синтаксису Pascal
-- ✅ Типи даних: integer, real, boolean, string, char, array
-- ✅ Контрольні конструкції: if/then/else, while, for, repeat/until
-- ✅ Процедури та функції з параметрами
-- ✅ Семантичний аналіз та перевірка типів
-- ✅ Генерація проміжного коду
-- ✅ Детальні повідомлення про помилки
-- ✅ Кросплатформеність (Windows, Linux, macOS)
+- Full Pascal syntax support
+- Data types: integer, real, boolean, string, char, array
+- Control structures: if/then/else, while, for, repeat/until
+- Procedures and functions with parameters
+- Semantic analysis and type checking
+- Intermediate code generation
+- Detailed error messages
+- Cross-platform (Windows, Linux, macOS)
 
-## 📋 Вимоги
+## 📋 Requirements
 
-- Python 3.8 або новіший
-- Без додаткових залежностей!
+- Python 3.8 or newer
+- No additional dependencies required
 
-## 🔧 Встановлення
+## 🔧 Installation
 
-1. Склонуйте репозиторій:
-```bash
+1. Clone the repository:
 git clone https://github.com/babych/PascalCompilerPy.git
 cd pascal-compiler
-```
 
-2. Готово! Компілятор не потребує встановлення.
+2. Done. The compiler does not require installation.
 
-## 📖 Використання
+## 📖 Usage
 
-### Базова компіляція
-```bash
+### Basic compilation
 python pascal_compiler.py program.pas
-```
 
-### З детальним виводом
-```bash
+### Verbose output
 python pascal_compiler.py program.pas -v
-```
 
-### Збереження у файл
-```bash
+### Save output to file
 python pascal_compiler.py program.pas -o output.txt
-```
 
-### Допомога
-```bash
+### Help
 python pascal_compiler.py -h
-```
 
-## 📝 Приклади
+## 📝 Examples
 
-### Простий приклад
-```pascal
+### Simple example
 program Hello;
 var
     x: integer;
@@ -86,10 +68,8 @@ begin
     x := 42;
     writeln('The answer is: ', x)
 end.
-```
 
-### Функції та процедури
-```pascal
+### Functions and procedures
 program MathExample;
 
 function Factorial(n: integer): integer;
@@ -105,83 +85,68 @@ end;
 begin
     writeln('5! = ', Factorial(5))
 end.
-```
 
-Більше прикладів у файлах `test_*.pas`
+More examples can be found in the test_*.pas files.
 
-## 🧪 Тестування
+## 🧪 Testing
 
-### Запуск всіх тестів
-```bash
+Run all tests:
 python run_tests.py
-```
 
-### Окремі тести
-```bash
-python pascal_compiler.py test_simple.pas      # Базові операції
-python pascal_compiler.py test_control.pas     # Умови та цикли
-python pascal_compiler.py test_functions.pas   # Функції та процедури
-python pascal_compiler.py test_errors.pas      # Обробка помилок
-```
+Individual tests:
+python pascal_compiler.py test_simple.pas
+python pascal_compiler.py test_control.pas
+python pascal_compiler.py test_functions.pas
+python pascal_compiler.py test_errors.pas
 
-## 🏗️ Архітектура
+## 🏗️ Architecture
 
-Компілятор складається з чотирьох основних фаз:
+The compiler consists of four main phases:
 
-1. **Лексичний аналіз** (`lexer.py`) - Токенізація вихідного коду
-2. **Синтаксичний аналіз** (`parser.py`) - Побудова AST
-3. **Семантичний аналіз** (`semantic_analyzer.py`) - Перевірка типів та змінних
-4. **Генерація коду** (`code_generator.py`) - Створення проміжного коду
+1. Lexical analysis (lexer.py)
+2. Syntax analysis (parser.py)
+3. Semantic analysis (semantic_analyzer.py)
+4. Code generation (code_generator.py)
 
-## 📂 Структура проекту
+## 📂 Project Structure
 
-```
 pascal-compiler/
 ├── .github/
-│   └── workflows/          # GitHub Actions CI/CD
-├── pascal_compiler.py      # Головний файл компілятора
-├── lexer.py               # Лексичний аналізатор
-├── parser.py              # Синтаксичний аналізатор
-├── ast_nodes.py           # Визначення вузлів AST
-├── semantic_analyzer.py   # Семантичний аналізатор
-├── code_generator.py      # Генератор коду
-├── run_tests.py           # Тестовий скрипт
-├── test_*.pas             # Тестові програми
-└── README.md              # Документація
-```
+│   └── workflows/
+├── pascal_compiler.py
+├── pascal_lexer.py
+├── pascal_parser.py
+├── ast_nodes.py
+├── semantic_analyzer.py
+├── code_generator.py
+├── run_tests.py
+├── test_*.pas
+└── README.md
 
-## 🤝 Внесок
+## 🤝 Contributing
 
-Вітаються pull requests! Для великих змін спочатку відкрийте issue для обговорення.
-
-### Як внести зміни:
-1. Fork репозиторій
-2. Створіть гілку (`git checkout -b feature/amazing-feature`)
-3. Зробіть commit (`git commit -m 'Add amazing feature'`)
-4. Push до гілки (`git push origin feature/amazing-feature`)
-5. Відкрийте Pull Request
+Pull requests are welcome. For major changes, please open an issue first.
 
 ## 📊 CI/CD
 
-Проект використовує GitHub Actions для автоматичного тестування на:
-- 🐧 Linux (Ubuntu)
-- 🪟 Windows
-- 🍎 macOS
+GitHub Actions runs tests on:
+- Linux
+- Windows
+- macOS
 
-З версіями Python: 3.8, 3.9, 3.10, 3.11, 3.12
+Python versions: 3.8 – 3.12
 
-## 📄 Ліцензія
+## 📄 License
 
-Цей проект надається "як є" для освітніх цілей.
+Provided “as is” for educational purposes.
 
-## 🙏 Подяки
+## 🙏 Acknowledgements
 
-Створено як демонстрація технік розробки компіляторів на основі класичних принципів.
+Created as a demonstration of classical compiler construction techniques.
 
-## 📞 Зворотній зв'язок
+## 📞 Feedback
 
-Якщо знайшли баг або маєте пропозицію - створіть [Issue](https://github.com/Babych/PascalCompilerPy/issues)!
+If you find a bug or have suggestions, open an Issue:
+https://github.com/Babych/PascalCompilerPy/issues
 
----
-
-**Зроблено з ❤️ для спільноти Pascal**
+Made with ❤️ for the Pascal community
