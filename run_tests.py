@@ -6,7 +6,14 @@ Runs all test programs and verifies compilation
 
 import subprocess
 import sys
+import os
 from pathlib import Path
+
+# Fix encoding for Windows
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 class Colors:
     GREEN = '\033[92m'
@@ -33,7 +40,7 @@ def run_test(test_file, description):
         )
         
         if result.returncode == 0:
-            print(f"{Colors.GREEN}✓ PASSED{Colors.RESET}")
+            print(f"{Colors.GREEN}[PASSED]{Colors.RESET}")
             print(f"\nOutput preview (first 10 lines):")
             lines = result.stdout.split('\n')
             for line in lines[:10]:
@@ -42,16 +49,16 @@ def run_test(test_file, description):
                 print(f"  ... ({len(lines) - 10} more lines)")
             return True
         else:
-            print(f"{Colors.RED}✗ FAILED{Colors.RESET}")
+            print(f"{Colors.RED}[FAILED]{Colors.RESET}")
             print(f"\nError output:")
             print(result.stderr)
             return False
             
     except subprocess.TimeoutExpired:
-        print(f"{Colors.RED}✗ TIMEOUT{Colors.RESET}")
+        print(f"{Colors.RED}[TIMEOUT]{Colors.RESET}")
         return False
     except Exception as e:
-        print(f"{Colors.RED}✗ ERROR: {e}{Colors.RESET}")
+        print(f"{Colors.RED}[ERROR]: {e}{Colors.RESET}")
         return False
 
 def main():
@@ -69,7 +76,7 @@ def main():
     results = []
     for test_file, description in tests:
         if not Path(test_file).exists():
-            print(f"{Colors.YELLOW}⚠ Skipping {test_file} - file not found{Colors.RESET}")
+            print(f"{Colors.YELLOW}[WARNING] Skipping {test_file} - file not found{Colors.RESET}")
             continue
         
         success = run_test(test_file, description)
@@ -84,13 +91,13 @@ def main():
     total = len(results)
     
     for test_file, success in results:
-        status = f"{Colors.GREEN}✓ PASSED{Colors.RESET}" if success else f"{Colors.RED}✗ FAILED{Colors.RESET}"
+        status = f"{Colors.GREEN}[PASSED]{Colors.RESET}" if success else f"{Colors.RED}[FAILED]{Colors.RESET}"
         print(f"{status}  {test_file}")
     
     print(f"\n{Colors.BOLD}Results: {passed}/{total} tests passed{Colors.RESET}")
     
     if passed == total:
-        print(f"{Colors.GREEN}{Colors.BOLD}All tests passed! 🎉{Colors.RESET}\n")
+        print(f"{Colors.GREEN}{Colors.BOLD}All tests passed!{Colors.RESET}\n")
         return 0
     else:
         print(f"{Colors.RED}{Colors.BOLD}Some tests failed.{Colors.RESET}\n")
