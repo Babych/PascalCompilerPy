@@ -47,7 +47,7 @@ python3 run_tests.py
 
 1. Склонуйте репозиторій:
 ```bash
-git clone https://github.com/YOUR_USERNAME/pascal-compiler.git
+git clone https://github.com/babych/PascalCompilerPy.git
 cd pascal-compiler
 ```
 
@@ -180,7 +180,7 @@ pascal-compiler/
 
 ## 📞 Зворотній зв'язок
 
-Якщо знайшли баг або маєте пропозицію - створіть [Issue](https://github.com/YOUR_USERNAME/pascal-compiler/issues)!
+Якщо знайшли баг або маєте пропозицію - створіть [Issue](https://github.com/Babych/PascalCompilerPy/issues)!
 
 ---
 
