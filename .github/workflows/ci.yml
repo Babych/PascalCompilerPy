@@ -46,7 +46,7 @@ jobs:
     
     - name: Upload Test Outputs
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: test-outputs-${{ matrix.os }}-python${{ matrix.python-version }}
         path: |
@@ -102,7 +102,7 @@ jobs:
         zip -r pascal-compiler.zip *
     
     - name: Upload Release Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: pascal-compiler-release
         path: |
